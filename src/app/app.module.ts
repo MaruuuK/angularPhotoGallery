@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,15 +12,25 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { PhotoPageComponent } from './pages/photo-page/photo-page.component';
+import { PhotosMainComponent } from './components/photos-main/photos-main.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NotFoundComponent, MainPageComponent, FavoritesPageComponent, PhotoPageComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    NotFoundComponent,
+    MainPageComponent,
+    FavoritesPageComponent,
+    PhotoPageComponent,
+    PhotosMainComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

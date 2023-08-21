@@ -1,0 +1,25 @@
+.container{
+  padding: 20px;
+}
+
+.photo-container{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-evenly;
+  row-gap: 10px;
+}
+
+.photo-card {
+  max-width: 400px;
+}
+
+.photo {
+  width: 100%;
+}
+
+.progress-spinner{
+  padding: 10px;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+}
