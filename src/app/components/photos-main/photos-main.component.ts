@@ -10,6 +10,7 @@ import { Photo } from 'src/app/shared/photo.model';
 export class PhotosMainComponent implements OnInit {
   public photosList: Photo[] = [];
   public isLoading = false;
+  public error: string | null = null;
 
   constructor(private loadPhotoService: LoadPhotoService) {}
 
@@ -25,8 +26,8 @@ export class PhotosMainComponent implements OnInit {
         this.photosList = this.photosList.concat(results);
         this.isLoading = false;
       },
-      error: (error) => {
-        console.error('Error fetching photos:', error);
+      error: (errorMessage: string) => {
+        this.error = errorMessage;
         this.isLoading = false;
       },
     });
