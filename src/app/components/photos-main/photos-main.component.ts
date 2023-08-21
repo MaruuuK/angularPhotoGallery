@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetPhotosService } from 'src/app/services/get-photos/get-photos.service';
+import { LoadPhotoService } from 'src/app/services/load-photo/load-photo.service';
 import { Photo } from 'src/app/shared/photo.model';
 
 @Component({
@@ -11,20 +11,24 @@ export class PhotosMainComponent implements OnInit {
   public photosList: Photo[] = [];
   public isLoading = false;
 
-  constructor(private getPhotosService: GetPhotosService) {}
+  constructor(private loadPhotoService: LoadPhotoService) {}
 
   ngOnInit() {
-    this.loadPhotos();
+    this.loadPhotos(6);
   }
 
-  loadPhotos(): void {
+  private loadPhotos(amount: number): void {
     this.isLoading = true;
-    for (let i = 0; i < 3; i++) {
-      this.getPhotosService.getRandomImage(i).subscribe((photoUrl: string) => {
-        this.photosList.push({ id: i, url: photoUrl });
+
+    this.loadPhotoService.loadPhotos(amount).subscribe({
+      next: (results: Photo[]) => {
+        this.photosList = this.photosList.concat(results);
         this.isLoading = false;
-      });
-    }
-    console.log(this.photosList);
+      },
+      error: (error) => {
+        console.error('Error fetching photos:', error);
+        this.isLoading = false;
+      },
+    });
   }
 }

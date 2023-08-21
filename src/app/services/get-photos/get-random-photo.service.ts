@@ -8,7 +8,7 @@ import { Observable, of, delay } from 'rxjs';
 export class GetPhotosService {
   constructor(private url: ConfigService) {}
 
-  getRandomImage(id: number): Observable<string> {
+  getRandomPhoto(id: number): Observable<string> {
     const randomDelay = Math.floor(Math.random() * 100) + 200;
     return of(`${this.url.apiUrl}${id}200/300?random=${Math.random()}`).pipe(
       delay(randomDelay)
