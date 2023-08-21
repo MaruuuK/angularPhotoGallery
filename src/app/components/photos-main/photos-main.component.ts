@@ -63,4 +63,8 @@ export class PhotosMainComponent implements OnInit {
       this.loadPhotos(3);
     }
   }
+
+  onAddFavorite(photo: Photo): void {
+    console.log(photo);
+  }
 }

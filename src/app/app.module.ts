@@ -13,6 +13,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
 import { PhotoPageComponent } from './pages/photo-page/photo-page.component';
 import { PhotosMainComponent } from './components/photos-main/photos-main.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { PhotoCardComponent } from './components/photo-card/photo-card.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PhotosMainComponent } from './components/photos-main/photos-main.compon
     FavoritesPageComponent,
     PhotoPageComponent,
     PhotosMainComponent,
+    FavoritesComponent,
+    PhotoCardComponent,
   ],
   imports: [
     BrowserModule,

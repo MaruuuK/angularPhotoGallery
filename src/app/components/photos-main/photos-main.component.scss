@@ -11,6 +11,12 @@
 
 .photo-card {
   max-width: 400px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.photo-card:hover{
+  transform: scale(1.05);
 }
 
 .photo {
