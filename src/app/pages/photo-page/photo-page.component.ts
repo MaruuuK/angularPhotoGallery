@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-photo-page',
   templateUrl: './photo-page.component.html',
-  styleUrls: ['./photo-page.component.scss']
+  styleUrls: ['./photo-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PhotoPageComponent {
-
-}
+export class PhotoPageComponent {}

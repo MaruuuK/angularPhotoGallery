@@ -1,4 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  OnInit,
+} from '@angular/core';
 import { LoadPhotoService } from 'src/app/services/load-photo/load-photo.service';
 import { Photo } from 'src/app/shared/photo.model';
 
@@ -6,13 +12,17 @@ import { Photo } from 'src/app/shared/photo.model';
   selector: 'app-photos-main',
   templateUrl: './photos-main.component.html',
   styleUrls: ['./photos-main.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotosMainComponent implements OnInit {
   public photosList: Photo[] = [];
   public isLoading = false;
   public error: string | null = null;
 
-  constructor(private loadPhotoService: LoadPhotoService) {}
+  constructor(
+    private loadPhotoService: LoadPhotoService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.loadPhotos(9);
@@ -25,10 +35,12 @@ export class PhotosMainComponent implements OnInit {
       next: (results: Photo[]) => {
         this.photosList = this.photosList.concat(results);
         this.isLoading = false;
+        this.cdr.detectChanges();
       },
       error: (errorMessage: string) => {
         this.error = errorMessage;
         this.isLoading = false;
+        this.cdr.detectChanges();
       },
     });
   }
@@ -47,7 +59,7 @@ export class PhotosMainComponent implements OnInit {
     );
     const windowBottom = windowHeight + window.scrollY;
 
-    if (windowBottom >= docHeight - 1 && !this.isLoading) {
+    if (windowBottom >= docHeight - 50 && !this.isLoading) {
       this.loadPhotos(3);
     }
   }
