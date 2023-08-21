@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="photo-container" *ngIf="!isLoading">
+  <div class="photo-container">
     <div class="photo-card" *ngFor="let photo of photosList">
       <img class="photo" [src]="photo.url" alt="Random photo">
     </div>

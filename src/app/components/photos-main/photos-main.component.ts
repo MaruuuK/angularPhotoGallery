@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LoadPhotoService } from 'src/app/services/load-photo/load-photo.service';
 import { Photo } from 'src/app/shared/photo.model';
 
@@ -15,7 +15,7 @@ export class PhotosMainComponent implements OnInit {
   constructor(private loadPhotoService: LoadPhotoService) {}
 
   ngOnInit() {
-    this.loadPhotos(6);
+    this.loadPhotos(9);
   }
 
   private loadPhotos(amount: number): void {
@@ -31,5 +31,24 @@ export class PhotosMainComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    const windowHeight = window.innerHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
+    const windowBottom = windowHeight + window.scrollY;
+
+    if (windowBottom >= docHeight - 1 && !this.isLoading) {
+      this.loadPhotos(3);
+    }
   }
 }
