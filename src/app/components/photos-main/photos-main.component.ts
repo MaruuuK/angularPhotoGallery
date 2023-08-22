@@ -5,6 +5,7 @@ import {
   HostListener,
   OnInit,
 } from '@angular/core';
+import { FavoriteService } from 'src/app/services/favorites/favorites.service';
 import { LoadPhotoService } from 'src/app/services/load-photo/load-photo.service';
 import { Photo } from 'src/app/shared/photo.model';
 
@@ -14,6 +15,7 @@ import { Photo } from 'src/app/shared/photo.model';
   styleUrls: ['./photos-main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class PhotosMainComponent implements OnInit {
   public photosList: Photo[] = [];
   public isLoading = false;
@@ -21,7 +23,8 @@ export class PhotosMainComponent implements OnInit {
 
   constructor(
     private loadPhotoService: LoadPhotoService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit() {
@@ -65,6 +68,6 @@ export class PhotosMainComponent implements OnInit {
   }
 
   onAddFavorite(photo: Photo): void {
-    console.log(photo);
+    this.favoriteService.addFavorite(photo);
   }
 }
