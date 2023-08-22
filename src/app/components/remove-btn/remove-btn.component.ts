@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-import { FavoriteService } from 'src/app/services/favorites/favorites.service';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-remove-btn',
   templateUrl: './remove-btn.component.html',
-  styleUrls: ['./remove-btn.component.scss']
+  styleUrls: ['./remove-btn.component.scss'],
 })
 export class RemoveBtnComponent {
-  constructor(private favoriteService: FavoriteService) { }
+  @Output() removePhoto = new EventEmitter<Event>();
+  onRemovePhoto() {
+    this.removePhoto.emit();
+  }
 }

@@ -37,5 +37,16 @@ export class FavoriteService {
     }
     return 'Photo not found';
   }
-  
+
+  removePhoto(id: number) {
+    console.log(id);
+    const foundPhoto = this.favoritePhoto.find((item: Photo) => item.id === id);
+    if (foundPhoto) {
+      this.favoritePhoto.splice(this.favoritePhoto.indexOf(foundPhoto), 1);
+      localStorage.setItem(
+        this.favoritesKey,
+        JSON.stringify(this.favoritePhoto)
+      );
+    }
+  }
 }

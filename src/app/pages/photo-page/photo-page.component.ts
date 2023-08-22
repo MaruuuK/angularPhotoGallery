@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FavoriteService } from 'src/app/services/favorites/favorites.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class PhotoPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -22,5 +23,10 @@ export class PhotoPageComponent implements OnInit {
       this.id = Number(params['id']);
       this.src = this.favoriteService.getPhotoById(this.id);
     });
+  }
+
+  onRemovePhoto() {
+    this.favoriteService.removePhoto(this.id);
+    this.router.navigate(['/favorites']);
   }
 }
