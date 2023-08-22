@@ -29,4 +29,12 @@ export class FavoriteService {
       );
     }
   }
+
+  getPhotoById(id: number): string {
+    const foundPhoto = this.favoritePhoto.find((item: Photo) => id === item.id);
+    if (foundPhoto) {
+      return foundPhoto.url;
+    }
+    return 'Photo not found';
+  }
 }
