@@ -5,48 +5,41 @@ import { Photo } from 'src/app/shared/photo.model';
   providedIn: 'root',
 })
 export class FavoriteService {
-  private favoritePhoto: Photo[] = [];
-  private favoritesKey = 'favorites';
+  private photos: Photo[] = [];
+  private storageKey = 'favorites';
 
   constructor() {
-    const photos = localStorage.getItem(this.favoritesKey);
+    const photos = localStorage.getItem(this.storageKey);
     if (photos) {
-      this.favoritePhoto = JSON.parse(photos);
+      this.photos = JSON.parse(photos);
     }
   }
 
   getFavorites(): Photo[] {
-    return this.favoritePhoto;
+    return this.photos;
   }
 
-  addFavorite(photo: Photo): void {
-    const foundPhoto = this.favoritePhoto.find((item) => item.id === photo.id);
-    if (!foundPhoto) {
-      this.favoritePhoto.push(photo);
-      localStorage.setItem(
-        this.favoritesKey,
-        JSON.stringify(this.favoritePhoto)
-      );
+  add(photo: Photo): void {
+    if (this.getById(photo.id) === null) {
+      this.photos.push(photo);
+      this.saveToStorage();
     }
   }
 
-  getPhotoById(id: number): string {
-    const foundPhoto = this.favoritePhoto.find((item: Photo) => id === item.id);
+  getById(id: number): Photo | null {
+    const foundPhoto = this.photos.find((item: Photo) => id === item.id);
+    return foundPhoto ? foundPhoto : null;
+  }
+
+  remove(id: number) {
+    const foundPhoto = this.getById(id);
     if (foundPhoto) {
-      return foundPhoto.url;
+      this.photos.splice(this.photos.indexOf(foundPhoto), 1);
+      this.saveToStorage();
     }
-    return 'Photo not found';
   }
 
-  removePhoto(id: number) {
-    console.log(id);
-    const foundPhoto = this.favoritePhoto.find((item: Photo) => item.id === id);
-    if (foundPhoto) {
-      this.favoritePhoto.splice(this.favoritePhoto.indexOf(foundPhoto), 1);
-      localStorage.setItem(
-        this.favoritesKey,
-        JSON.stringify(this.favoritePhoto)
-      );
-    }
+  private saveToStorage() {
+    localStorage.setItem(this.storageKey, JSON.stringify(this.photos));
   }
 }

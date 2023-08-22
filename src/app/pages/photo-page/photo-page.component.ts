@@ -21,12 +21,15 @@ export class PhotoPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.id = Number(params['id']);
-      this.src = this.favoriteService.getPhotoById(this.id);
+      const photo = this.favoriteService.getById(this.id);
+      if (photo !== null) {
+        this.src = photo.url;
+      }
     });
   }
 
   onRemovePhoto() {
-    this.favoriteService.removePhoto(this.id);
+    this.favoriteService.remove(this.id);
     this.router.navigate(['/favorites']);
   }
 }

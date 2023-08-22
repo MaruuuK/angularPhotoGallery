@@ -67,6 +67,6 @@ export class PhotosMainComponent implements OnInit {
   }
 
   onAddFavorite(photo: Photo): void {
-    this.favoriteService.addFavorite(photo);
+    this.favoriteService.add(photo);
   }
 }
