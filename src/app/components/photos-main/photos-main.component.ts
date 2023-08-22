@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FavoriteService } from 'src/app/services/favorites/favorites.service';
 import { LoadPhotoService } from 'src/app/services/load-photo/load-photo.service';
+import { ConfigService } from 'src/app/shared/config.service';
 import { Photo } from 'src/app/shared/photo.model';
 
 @Component({
@@ -23,11 +24,12 @@ export class PhotosMainComponent implements OnInit {
   constructor(
     private loadPhotoService: LoadPhotoService,
     private cdr: ChangeDetectorRef,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private configService: ConfigService,
   ) {}
 
   ngOnInit() {
-    this.loadPhotos(9);
+    this.loadPhotos(this.configService.initialNumberPhotos);
   }
 
   private loadPhotos(amount: number): void {
@@ -62,7 +64,7 @@ export class PhotosMainComponent implements OnInit {
     const windowBottom = windowHeight + window.scrollY;
 
     if (windowBottom >= docHeight - 50 && !this.isLoading) {
-      this.loadPhotos(3);
+      this.loadPhotos(this.configService.loadMoreNumberPhotos);
     }
   }
 
