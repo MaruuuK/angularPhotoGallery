@@ -40,3 +40,15 @@
   margin: 0;
   padding: 10px;
 }
+
+@media (max-width: 915px) {
+  .photo-container {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (max-width: 615px) {
+  .photo-container {
+    grid-template-columns: repeat(1, auto);
+  }
+}
