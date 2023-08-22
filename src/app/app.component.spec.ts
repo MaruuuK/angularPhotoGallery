@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component, Input } from '@angular/core';
 
+  @Component({ selector: 'app-header', template: '' })
+  class MockAppHeaderComponent {
+    @Input() src!: string;
+  }
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent, MockAppHeaderComponent],
+    })
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -14,16 +21,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angularPhotoGallery'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angularPhotoGallery');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angularPhotoGallery app is running!');
-  });
 });

@@ -14,8 +14,8 @@ import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.co
 import { PhotoPageComponent } from './pages/photo-page/photo-page.component';
 import { PhotosMainComponent } from './components/photos-main/photos-main.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
-import { PhotoCardComponent } from './components/photo-card/photo-card.component';
 import { RemoveBtnComponent } from './components/remove-btn/remove-btn.component';
+import { PhotoCardComponent } from './components/photo-card/photo-card.component';
 
 @NgModule({
   declarations: [

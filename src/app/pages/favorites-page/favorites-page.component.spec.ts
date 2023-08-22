@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FavoritesPageComponent } from './favorites-page.component';
+import { Component, Output } from '@angular/core';
+
+// Mock component for app-favorites
+@Component({ selector: 'app-favorites', template: '' })
+class MockAppFavoritesComponent {}
 
 describe('FavoritesPageComponent', () => {
   let component: FavoritesPageComponent;
@@ -8,7 +13,7 @@ describe('FavoritesPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FavoritesPageComponent]
+      declarations: [FavoritesPageComponent, MockAppFavoritesComponent],
     });
     fixture = TestBed.createComponent(FavoritesPageComponent);
     component = fixture.componentInstance;
