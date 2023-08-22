@@ -15,7 +15,6 @@ import { Photo } from 'src/app/shared/photo.model';
   styleUrls: ['./photos-main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class PhotosMainComponent implements OnInit {
   public photosList: Photo[] = [];
   public isLoading = false;

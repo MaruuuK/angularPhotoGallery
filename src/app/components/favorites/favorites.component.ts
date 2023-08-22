@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FavoriteService } from 'src/app/services/favorites/favorites.service';
 import { Photo } from 'src/app/shared/photo.model';
 
@@ -11,9 +12,16 @@ import { Photo } from 'src/app/shared/photo.model';
 export class FavoritesComponent implements OnInit {
   public favoritePhotos: Photo[] = [];
 
-  constructor(private favoriteService: FavoriteService) {}
+  constructor(
+    private favoriteService: FavoriteService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.favoritePhotos = this.favoriteService.getFavorites();
+  }
+
+  onNavigateSinglePhoto(photo: Photo) {
+    this.router.navigate(['/photos', photo.id]);
   }
 }
