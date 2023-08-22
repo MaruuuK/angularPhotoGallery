@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="photo-container" *ngFor=" let photo of favoritePhotos" (click)=" onNavigateSinglePhoto(photo)"
+    (keydown.enter)="onNavigateSinglePhoto(photo)" tabindex="0" aria-label="Open a photo" class="photo-card">
+    <app-photo-card [src]="photo.thumbnailUrl"></app-photo-card>
+  </div>
+  <div class="alert-message" *ngIf="!favoritePhotos?.length">
+    <p>No photos have been added to your favorites yet.</p>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-evenly;
+  row-gap: 20px;
+
+}
+
+.alert-message p{
+  color: #3f51b5;
+  font-size: 30px;
+  margin: 0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.photo-card {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.photo-card:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 915px) {
+  .container {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media (max-width: 615px) {
+  .container {
+    grid-template-columns: repeat(1, auto);
+  }
+}
