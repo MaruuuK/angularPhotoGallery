@@ -37,4 +37,5 @@ export class FavoriteService {
     }
     return 'Photo not found';
   }
+  
 }

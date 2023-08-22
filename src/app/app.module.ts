@@ -15,6 +15,7 @@ import { PhotoPageComponent } from './pages/photo-page/photo-page.component';
 import { PhotosMainComponent } from './components/photos-main/photos-main.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { PhotoCardComponent } from './components/photo-card/photo-card.component';
+import { RemoveBtnComponent } from './components/remove-btn/remove-btn.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PhotoCardComponent } from './components/photo-card/photo-card.component
     PhotosMainComponent,
     FavoritesComponent,
     PhotoCardComponent,
+    RemoveBtnComponent,
   ],
   imports: [
     BrowserModule,
