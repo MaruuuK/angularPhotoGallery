@@ -1,6 +1,6 @@
 <div class="container">
   <div class="photo-container" *ngFor=" let photo of favoritePhotos" (click)=" onNavigateSinglePhoto(photo)"
-    (keydown.enter)="onNavigateSinglePhoto(photo)" tabindex="0" aria-label="Open a photo">
+    (keydown.enter)="onNavigateSinglePhoto(photo)" tabindex="0" aria-label="Open a photo" class="photo-card">
     <app-photo-card [src]="photo.url"></app-photo-card>
   </div>
   <div class="alert-message" *ngIf="!favoritePhotos?.length">

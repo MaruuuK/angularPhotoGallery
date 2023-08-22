@@ -15,6 +15,15 @@
   text-align: center;
 }
 
+.photo-card {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.photo-card:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 915px) {
   .container {
     grid-template-columns: repeat(2, auto);
